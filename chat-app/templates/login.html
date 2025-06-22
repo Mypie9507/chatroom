@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>登录聊天室</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+      text-align: center;
+      background: #f5f5f5;
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 240px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 16px;
+      background: #1890ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔐 输入密码进入聊天室</h2>
+  <form method="post" action="/login">
+    <input type="password" name="password" placeholder="请输入访问密码" required />
+    <br />
+    <button type="submit">进入聊天室</button>
+  </form>
+
+  {% if error %}
+    <div class="error">{{ error }}</div>
+  {% endif %}
+</body>
+</html>

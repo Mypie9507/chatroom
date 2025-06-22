@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>聊天室</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div id="chatroom">
+    <div id="top">
+      <input id="nicknameInput" placeholder="输入昵称" onchange="saveNickname()" />
+      <button onclick="exportChat()">导出记录</button>
+    </div>
+
+    <ul id="messages"></ul>
+
+    <div id="bottom">
+      <input id="messageInput" placeholder="输入消息..." />
+      <input type="file" id="fileInput" onchange="uploadMedia(event)" />
+      <label for="fileInput" class="label-file">选择文件</label>
+      <button onclick="sendMessage()">发送</button>
+      <button onclick="startCall()">📞</button>
+    </div>
+  </div>
+
+  <!-- 视频悬浮通话小窗 -->
+  <div id="videoFloat" style="display: none;" onmousedown="startDrag(event)">
+    <video id="remoteVideo" autoplay playsinline></video>
+    <video id="localVideo" autoplay muted playsinline class="small"></video>
+    <button id="hangupBtn" onclick="endCall()">✕</button>
+  </div>
+
+  <!-- 图片预览弹窗 -->
+  <div id="previewOverlay" onclick="hidePreview()">
+    <div id="previewBox" onclick="event.stopPropagation()">
+      <button id="previewClose" onclick="hidePreview()">×</button>
+      <img id="previewImage" draggable="false" />
+      <a id="previewSave" target="_blank" download>保存图片</a>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
